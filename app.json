@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "ArtSphere",
+    "slug": "ArtSphere",
+    "android": {
+      "package": "com.Artsphere.VolunteerApp"
+    }
+  }
+}
