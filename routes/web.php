@@ -15,6 +15,11 @@ Route::inertia('/commercial', 'marketing/commercial')->name('commercial');
 Route::inertia('/contact', 'marketing/contact')->name('contact');
 Route::inertia('/testimonials', 'marketing/testimonials')->name('testimonials');
 
+
+Route::get('/testroute', function () {
+    return "bob";
+})->name('testroute');
+
 // Gallery
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
 
