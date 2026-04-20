@@ -1,0 +1,21 @@
+name: Deploy Static Site
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - name: Install Dependencies
+        run: composer install --prefer-dist --no-progress --no-interaction
+      - name: Export Site
+        run: php artisan export
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # The folder the action should deploy.
