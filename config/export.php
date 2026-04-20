@@ -35,6 +35,7 @@ return [
         '/\.php$/',
         '/mix-manifest\.json$/',
         '/public[\/\\\\]storage/',
+        '/public[\/\\\\]hot$/',
     ],
 
     /*
@@ -58,6 +59,7 @@ return [
      * You can skip these by adding a `--skip-{name}` flag to the command.
      */
     'before' => [
+        'cleanup' => 'php -r "is_file(\'public/hot\') && unlink(\'public/hot\');"',
         'assets' => 'npm run build',
     ],
 
@@ -68,7 +70,7 @@ return [
      * You can skip these by adding a `--skip-{name}` flag to the command.
      */
     'after' => [
-        // 'deploy' => '/usr/local/bin/netlify deploy --prod',
+        'publish' => 'node scripts/rename-dist-to-docs.js',
     ],
 
 ];
